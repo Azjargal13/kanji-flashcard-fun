@@ -4,7 +4,7 @@
       <v-card-text>
         <div>Word of the Day</div>
         <p class="display-1 text--primary">be•nev•o•lent</p>
-        <p>adjective</p>
+        <p>hey</p>
         <div class="text--primary">
           well meaning and kindly.
           <br />"a benevolent smile"
@@ -14,7 +14,6 @@
         <v-btn text color="deep-purple accent-4">Learn More</v-btn>
       </v-card-actions>
     </v-card>
-    {{data}}
   </div>
 </template>
 
@@ -22,11 +21,12 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import KanjiList from "../lib/getKanjiList";
+import KanjiType from "../type/types";
 @Component
 export default class Counter extends Vue {
   // Class properties will be component data
   private kanjiList = new KanjiList();
-  private data = this.kanjiList.getKanji();
+  private data: KanjiType = this.kanjiList.getKanji();
 }
 </script>
 
