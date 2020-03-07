@@ -1,18 +1,8 @@
 <template>
-  <div>
-    <v-card class="mx-auto" max-width="344">
-      <v-card-text>
-        <div>Word of the Day</div>
-        <p class="display-1 text--primary">be•nev•o•lent</p>
-        <p>hey</p>
-        <div class="text--primary">
-          well meaning and kindly.
-          <br />"a benevolent smile"
-        </div>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn text color="deep-purple accent-4">Learn More</v-btn>
-      </v-card-actions>
+  <div id="main" class="mx-auto my-auto">
+    <v-card class="mx-auto my-auto text-center" width="250" height="350">
+      <span align="center" class="kanji">{{kanjiKey[displayKanji]}}</span>
+      <div>JPLT level: N{{kanjiValue[displayKanji].jlpt_new}}</div>
     </v-card>
   </div>
 </template>
@@ -26,9 +16,30 @@ import KanjiType from "../type/types";
 export default class Counter extends Vue {
   // Class properties will be component data
   private kanjiList = new KanjiList();
-  private data: KanjiType = this.kanjiList.getKanji();
+  private data = this.kanjiList.getKanji();
+
+  // based on the len of data, generate random number to access data
+  // generate random data card in page
+  private displayKanji = this.generateRandomKanji();
+  private kanjiKey = Object.keys(this.data);
+  private kanjiValue = Object.values(this.data);
+
+  generateRandomKanji() {
+    return Math.floor(Math.random() * (2136 - 0 + 1) + 0);
+  }
+
+  // when u hover on kanji, it will zoom-in
 }
 </script>
 
 <style scoped>
+#main {
+  font-family: "Noto Serif JP", serif;
+}
+.kanji {
+  font-size: 180px;
+}
+.kanji:hover {
+  background-color: #26a69a;
+}
 </style>
