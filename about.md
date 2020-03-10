@@ -30,8 +30,8 @@ Timeline:
 
 # TODO
 - [x] - Find kanji list (resources)
-- [ ] - Scaffold project
-- [ ] - Logic 
+- [x] - Scaffold project
+- [x] - Logic 
 - [ ] - Design
 - [ ] - Implement
 
