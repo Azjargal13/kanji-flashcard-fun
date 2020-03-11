@@ -2,6 +2,11 @@
   <v-container id="main" class="mx-auto my-auto pa-4">
     <v-row  align="center"
       justify="center"  height=100%>
+      <v-column>
+        <v-btn @click="prevKanji" color="primary">
+        prev
+      </v-btn>
+    </v-column>
     <v-card class="mx-auto my-auto text-center kanji-card" width="250" height="350" v-show="front" @click="flipCard">
       <span align="center" class="kanji">{{kanjiKey[displayKanji]}}</span>
       <div>JPLT level: N{{kanjiValue[displayKanji].jlpt_new}}</div>
@@ -22,10 +27,12 @@
       <!-- <p>Imagine the following words and make funny story to recall later.</p> -->  
       </div>
     </v-card>
-    </v-row>
-    <v-btn @click="nextKanji" color="primary">
+    <v-column>
+      <v-btn @click="nextKanji" color="primary">
       next
     </v-btn>
+    </v-column>
+    </v-row>     
   </v-container>
 </template>
 
@@ -39,22 +46,36 @@ export default class Counter extends Vue {
   // Class properties will be component data
   private kanjiList = new KanjiList();
   private data = this.kanjiList.getKanji();
-
+  
   // based on the len of data, generate random number to access data
   // generate random data card in page
-  private displayKanji = this.generateRandomKanji();
-  private kanjiKey = Object.keys(this.data);
-  private kanjiValue = Object.values(this.data);
+  private displayKanji: number | undefined = this.generateRandomKanji();
+  private kanjiKey: Array<string> | undefined = Object.keys(this.data);
+  private kanjiValue: Array<object> | undefined = Object.values(this.data);
+  
+  // for showing prev kanjis
+  private shownKanji: Array<number> = [this.displayKanji as number]
 
+  // for flip card view
   private front=true
+
   generateRandomKanji() {
-    return Math.floor(Math.random() * (2136 - 0 + 1) + 0);
+    const rand = Math.floor(Math.random() * (2136 - 0 + 1) + 0);
+    return  rand
   }
   flipCard(){
     this.front = !this.front
   }
   nextKanji(){
     this.displayKanji = this.generateRandomKanji()
+    this.shownKanji.push(this.displayKanji)
+  }
+  prevKanji(){
+    if (this.shownKanji.length > 0) {
+        const len = this.shownKanji.length
+        this.displayKanji = this.shownKanji[len-2]
+        this.shownKanji.pop()
+    }  
   }
 }
 </script>
