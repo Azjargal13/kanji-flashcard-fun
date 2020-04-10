@@ -1,4 +1,14 @@
-# kanji-flashcards
+# Kanji-flashcards
+
+This project will help to memorize kanjis using flashcard.
+
+# Sample view
+
+This is a sample view, a single flashcard with only kanji will be shown at first. To read the meaning and reading of the kanji, flip the card and check it out.
+
+Press `next` button to see next flashcard, also can to see previous flashcard by clicking `prev` button.
+
+![](public/kanji-card-flip.gif)
 
 ## Project setup
 ```
@@ -20,5 +30,8 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Contribute
+
+You can always contribute by forking this project and create new issue. 
+
+Thanks for you cooperation :)
