@@ -9,6 +9,7 @@
     </v-column>
     <v-card class="mx-auto my-auto text-center kanji-card" width="250" height="350" v-show="front" @click="flipCard">
       <span align="center" class="kanji">{{kanjiKey[displayKanji]}}</span>
+      <!-- <span align="center" class="kanji">{{cardKanji}}</span> -->
       <div>JPLT level: N{{kanjiValue[displayKanji].jlpt_new}}</div>
       
     </v-card>
@@ -32,7 +33,10 @@
       next
     </v-btn>
     </v-column>
-    </v-row>     
+    </v-row>
+    <v-row class="align-center">
+      <vocabulary-Hint :fcardKanji=vocabKanji class="mx-auto my-auto"/>
+      </v-row>     
   </v-container>
 </template>
 
@@ -40,19 +44,29 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import KanjiList from "../lib/getKanjiList";
+import VocabularyHint from './vocabularyHint.vue';
 
-@Component
+@Component({
+  components:{
+    VocabularyHint
+  }
+})
 export default class Counter extends Vue {
+ 
   // Class properties will be component data
   private kanjiList = new KanjiList();
   private data = this.kanjiList.getKanji();
   
   // based on the len of data, generate random number to access data
   // generate random data card in page
-  private displayKanji: number | undefined = this.generateRandomKanji();
-  private kanjiKey: Array<string> | undefined = Object.keys(this.data);
-  private kanjiValue: Array<object> | undefined = Object.values(this.data);
+  private displayKanji: number  = this.generateRandomKanji();
+  private kanjiKey: Array<string>  = Object.keys(this.data);
+  private kanjiValue: Array<object>  = Object.values(this.data);
   
+  // private cardKanji: string = this.kanjiKey[this.displayKanji]
+  // for passing as Prop to show kanji vocab
+  
+  private vocabKanji: string = this.kanjiKey[this.displayKanji]
   // for showing prev kanjis
   private shownKanji: Array<number> = [this.displayKanji as number]
 
@@ -69,13 +83,18 @@ export default class Counter extends Vue {
   nextKanji(){
     this.displayKanji = this.generateRandomKanji()
     this.shownKanji.push(this.displayKanji)
+    this.passKanjiToLookUp(this.displayKanji)
   }
   prevKanji(){
     if (this.shownKanji.length > 0) {
         const len = this.shownKanji.length
         this.displayKanji = this.shownKanji[len-2]
         this.shownKanji.pop()
+        this.passKanjiToLookUp(this.displayKanji)
     }  
+  }
+  passKanjiToLookUp(pos: number){
+    this.vocabKanji = this.kanjiKey[pos]
   }
 }
 </script>
