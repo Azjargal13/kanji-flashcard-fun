@@ -4,7 +4,7 @@ export default class KanjiList {
     private n2data = require('./n2.json')
     private n3data = require('./n3.json')
     private n4data = require('./n4.json')
-    private n5data = require('./n4.json')
+    private n5data = require('./n5.json')
     
     getKanji() {
         //console.log('hey', Object.keys(this.data["meanings"]))
