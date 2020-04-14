@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-btn color="primary" @click="showThem" class="ma-3">To see vocab list</v-btn>
+    <v-btn color="primary" @click="showThem" class="ma-3">
+      <span v-show="!hide">
+        To see vocab list
+      </span>
+      <span v-show="hide">
+        To hide vocab list
+      </span>
+      </v-btn>
     <v-card v-show="hide" class="mx-auto" max-width="344">
       <v-card-text>
         <div>Word of the Day {{fcardKanji}}</div>
@@ -91,7 +98,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import KanjiList from "../lib/getKanjiList";
 
 @Component
@@ -112,17 +119,25 @@ export default class VocabularyHint extends Vue {
 
   showThem() {
     this.toggleVocab();
-    this.lookUpKanjiFromN1Data(this.fcardKanji);
-    this.lookUpKanjiFromN2Data(this.fcardKanji);
-    this.lookUpKanjiFromN3Data(this.fcardKanji);
-    this.lookUpKanjiFromN4Data(this.fcardKanji);
-    this.lookUpKanjiFromN5Data(this.fcardKanji);
+    // this.lookUpKanjiFromN1Data(this.fcardKanji);
+    // this.lookUpKanjiFromN2Data(this.fcardKanji);
+    // this.lookUpKanjiFromN3Data(this.fcardKanji);
+    // this.lookUpKanjiFromN4Data(this.fcardKanji);
+    // this.lookUpKanjiFromN5Data(this.fcardKanji);
   }
   toggleVocab() {
     this.hide = !this.hide;
   }
   @Prop({ default: " value" }) readonly fcardKanji!: string;
 
+  @Watch('fcardKanji', {immediate:true})
+  listenKanjiChange(kanji: string){
+    this.lookUpKanjiFromN1Data(kanji)
+    this.lookUpKanjiFromN2Data(kanji)
+    this.lookUpKanjiFromN3Data(kanji)
+    this.lookUpKanjiFromN4Data(kanji)
+    this.lookUpKanjiFromN5Data(kanji)
+  }
   lookUpKanjiFromData(kanji: string) {
     this.n1List = [];
     for (const ind in this.n1vocab) {
