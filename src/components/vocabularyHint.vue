@@ -20,10 +20,15 @@
               <v-list-item two-line rounded>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n1vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n1vocab[k].word}}</v-list-item-title>
+                  <v-list-item-title class="headline">{{n1vocab[k].word}}
+                    
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-col >
+            <v-col>
+              <v-icon v-text="'$speaker'"></v-icon>
+            </v-col>
             <v-col class="pa-1">{{n1vocab[k].meaning}}</v-col>
           </v-row>
         </div>
@@ -36,9 +41,13 @@
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n2vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n2vocab[k].word}}</v-list-item-title>
+                  <v-list-item-title class="headline">{{n2vocab[k].word}}
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+            </v-col>
+            <v-col>
+              <v-icon v-text="'$speaker'" align="center"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n2vocab[k].meaning}}</v-col>
           </v-row>
@@ -53,9 +62,14 @@
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n3vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n3vocab[k].word}}</v-list-item-title>
+                  <v-list-item-title class="headline">{{n3vocab[k].word}}
+                  
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+            </v-col>
+            <v-col>
+              <v-icon v-text="'$speaker'"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n3vocab[k].meaning}}</v-col>
           </v-row>
@@ -69,9 +83,14 @@
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n4vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n4vocab[k].word}}</v-list-item-title>
+                  <v-list-item-title class="headline">{{n4vocab[k].word}}
+                
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+            </v-col>
+            <v-col>
+              <v-icon v-text="'$speaker'"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n4vocab[k].meaning}}</v-col>
           </v-row>
@@ -85,9 +104,14 @@
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n5vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n5vocab[k].word}}</v-list-item-title>
+                  <v-list-item-title class="headline">{{n5vocab[k].word}}
+                
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+            </v-col>
+            <v-col>
+              <v-icon v-text="'$speaker'"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n5vocab[k].meaning}}</v-col>
           </v-row>
