@@ -1,67 +1,73 @@
 <template>
   <v-container id="main" class="mx-auto my-auto pa-4">
     <v-row align="center" justify="center" height="100%">
-      <v-column>
+      <v-col class="mx-auto my-auto">
         <v-btn @click="prevKanji" color="primary">prev</v-btn>
-      </v-column>
-      <v-card
-        class="mx-auto my-auto text-center kanji-card"
-        width="250"
-        height="350"
-        v-show="front"
-        @click="flipCard"
-      >
-        <span align="center" class="kanji">{{kanjiKey[displayKanji]}}</span>
-        <!-- <span align="center" class="kanji">{{cardKanji}}</span> -->
-        <div>JPLT level: N{{kanjiValue[displayKanji].jlpt_new}}</div>
-      </v-card>
-      <v-card
-        class="mx-auto my-auto primary kanji-card-back pa-2 white--text"
-        width="250"
-        height="350"
-        v-show="!front"
-        @click="flipCard"
-      >
-        <div class="headline mt-3 pa-1">
-          Kanji meaning:
-          <span
-            class="subtitle-1"
-            v-for="m in kanjiValue[displayKanji].meanings"
-            :key="m"
-          >{{m}},</span>
-        </div>
-        <div class="headline pa-1">
-          On reading:
-          <span
-            class="subtitle"
-            v-for="m in kanjiValue[displayKanji].readings_on"
-            :key="m"
-          >{{m}}</span>
-        </div>
-        <div class="headline pa-1">
-          Kun reading:
-          <span
-            class="subtitle"
-            v-for="m in kanjiValue[displayKanji].readings_kun"
-            :key="m"
-          >{{m}}</span>
-        </div>
-        <div class="headline pa-1">
-          Memorize keyword:
-          <span
-            class="subtitle-1"
-            v-for="m in kanjiValue[displayKanji].wk_radicals"
-            :key="m"
-          >{{m}},</span>
-          <!-- <p>Imagine the following words and make funny story to recall later.</p> -->
-        </div>
-      </v-card>
-      <v-column>
+      </v-col>
+      <v-col>
+        <v-card
+          class="mx-auto my-auto text-center kanji-card"
+          width="250"
+          height="350"
+          v-show="front"
+          @click="flipCard"
+        >
+          <span align="center" class="kanji">{{kanjiKey[displayKanji]}}</span>
+          <!-- <span align="center" class="kanji">{{cardKanji}}</span> -->
+          <div>JPLT level: N{{kanjiValue[displayKanji].jlpt_new}}</div>
+        </v-card>
+        <v-card
+          class="mx-auto my-auto primary kanji-card-back pa-2 white--text"
+          width="250"
+          height="350"
+          v-show="!front"
+          @click="flipCard"
+        >
+          <div class="headline mt-3 pa-1">
+            Kanji meaning:
+            <span
+              class="subtitle-1"
+              v-for="m in kanjiValue[displayKanji].meanings"
+              :key="m"
+            >{{m}},</span>
+          </div>
+          <div class="headline pa-1">
+            On reading:
+            <span
+              class="subtitle"
+              v-for="m in kanjiValue[displayKanji].readings_on"
+              :key="m"
+            >{{m}}</span>
+          </div>
+          <div class="headline pa-1">
+            Kun reading:
+            <span
+              class="subtitle"
+              v-for="m in kanjiValue[displayKanji].readings_kun"
+              :key="m"
+            >{{m}}</span>
+          </div>
+          <div class="headline pa-1">
+            Memorize keyword:
+            <span
+              class="subtitle-1"
+              v-for="m in kanjiValue[displayKanji].wk_radicals"
+              :key="m"
+            >{{m}},</span>
+            <!-- <p>Imagine the following words and make funny story to recall later.</p> -->
+          </div>
+        </v-card>
+      </v-col>
+
+      <v-col>
         <v-btn @click="nextKanji" color="primary">next</v-btn>
-      </v-column>
+      </v-col>
     </v-row>
     <v-row class="align-center">
       <vocabulary-Hint :fcardKanji="vocabKanji" class="mx-auto my-auto" />
+    </v-row>
+    <v-row>
+      <footer />
     </v-row>
   </v-container>
 </template>
@@ -71,10 +77,11 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import KanjiList from "../lib/getKanjiList";
 import VocabularyHint from "./vocabularyHint.vue";
-
+import Footer from "./Footer.vue";
 @Component({
   components: {
-    VocabularyHint
+    VocabularyHint,
+    Footer
   }
 })
 export default class Counter extends Vue {

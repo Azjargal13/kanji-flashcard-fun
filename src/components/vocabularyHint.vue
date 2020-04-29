@@ -1,117 +1,93 @@
 <template>
   <div>
     <v-btn color="primary" @click="showThem" class="ma-3">
-      <span v-show="!hide">
-        To see vocab list
-      </span>
-      <span v-show="hide">
-        To hide vocab list
-      </span>
-      </v-btn>
+      <span v-show="!hide">To see vocab list</span>
+      <span v-show="hide">To hide vocab list</span>
+    </v-btn>
     <v-card v-show="hide" class="mx-auto" max-width="344">
       <v-card-text>
         <div>Word of the Day {{fcardKanji}}</div>
         <div class="text--primary" v-if="n1List.length!=0">
-          <span class="font-weight-bold primary--text">
-            N1 vocabs
-          </span> 
+          <span class="font-weight-bold primary--text">N1 vocabs</span>
           <v-row v-for="k in n1List" :key="k">
             <v-col class="pa-1">
               <v-list-item two-line rounded>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n1vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n1vocab[k].word}}
-                    
-                  </v-list-item-title>
+                  <v-list-item-title class="headline">{{n1vocab[k].word}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
-            </v-col >
+            </v-col>
             <v-col>
-              <v-icon v-text="'$speaker'"></v-icon>
+              <v-icon v-text="'$speaker'" @click="speakSynthesis(n1vocab[k])"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n1vocab[k].meaning}}</v-col>
           </v-row>
         </div>
         <div class="text--primary" v-if="n2List.length!=0">
-          <span class="font-weight-bold primary--text">
-            N2 vocabs
-          </span> 
+          <span class="font-weight-bold primary--text">N2 vocabs</span>
           <v-row v-for="k in n2List" :key="k">
             <v-col class="pa-1">
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n2vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n2vocab[k].word}}
-                  </v-list-item-title>
+                  <v-list-item-title class="headline">{{n2vocab[k].word}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
             <v-col>
-              <v-icon v-text="'$speaker'" align="center"></v-icon>
+              <v-icon v-text="'$speaker'" align="center" @click="speakSynthesis(n2vocab[k])"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n2vocab[k].meaning}}</v-col>
           </v-row>
-    
         </div>
         <div class="text--primary" v-if="n3List.length!=0">
-          <span class="font-weight-bold primary--text">
-            N3 vocabs
-          </span> 
+          <span class="font-weight-bold primary--text">N3 vocabs</span>
           <v-row v-for="k in n3List" :key="k">
             <v-col class="pa-1">
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n3vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n3vocab[k].word}}
-                  
-                  </v-list-item-title>
+                  <v-list-item-title class="headline">{{n3vocab[k].word}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
             <v-col>
-              <v-icon v-text="'$speaker'"></v-icon>
+              <v-icon v-text="'$speaker'" @click="speakSynthesis(n3vocab[k])"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n3vocab[k].meaning}}</v-col>
           </v-row>
         </div>
         <div class="text--primary" v-if="n4List.length!=0">
-          <span class="font-weight-bold primary--text">
-            N4 vocabs
-          </span> 
-         <v-row v-for="k in n4List" :key="k">
+          <span class="font-weight-bold primary--text">N4 vocabs</span>
+          <v-row v-for="k in n4List" :key="k">
             <v-col class="pa-1">
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n4vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n4vocab[k].word}}
-                
-                  </v-list-item-title>
+                  <v-list-item-title class="headline">{{n4vocab[k].word}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
             <v-col>
-              <v-icon v-text="'$speaker'"></v-icon>
+              <v-icon v-text="'$speaker'" @click="speakSynthesis(n4vocab[k])"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n4vocab[k].meaning}}</v-col>
           </v-row>
         </div>
         <div class="text--primary" v-if="n5List.length!=0">
-           <span class="font-weight-bold primary--text">
-            N5 vocabs
-          </span> 
+          <span class="font-weight-bold primary--text">N5 vocabs</span>
           <v-row v-for="k in n5List" :key="k">
             <v-col class="pa-1">
               <v-list-item two-line>
                 <v-list-item-content class="col1">
                   <v-list-item-subtitle>{{n5vocab[k].hiragana}}</v-list-item-subtitle>
-                  <v-list-item-title class="headline">{{n5vocab[k].word}}
-                
-                  </v-list-item-title>
+                  <v-list-item-title class="headline">{{n5vocab[k].word}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
             <v-col>
-              <v-icon v-text="'$speaker'"></v-icon>
+              <v-icon v-text="'$speaker'" @click="speakSynthesis(n5vocab[k])"></v-icon>
             </v-col>
             <v-col class="pa-1">{{n5vocab[k].meaning}}</v-col>
           </v-row>
@@ -154,13 +130,13 @@ export default class VocabularyHint extends Vue {
   }
   @Prop({ default: " value" }) readonly fcardKanji!: string;
 
-  @Watch('fcardKanji', {immediate:true})
-  listenKanjiChange(kanji: string){
-    this.lookUpKanjiFromN1Data(kanji)
-    this.lookUpKanjiFromN2Data(kanji)
-    this.lookUpKanjiFromN3Data(kanji)
-    this.lookUpKanjiFromN4Data(kanji)
-    this.lookUpKanjiFromN5Data(kanji)
+  @Watch("fcardKanji", { immediate: true })
+  listenKanjiChange(kanji: string) {
+    this.lookUpKanjiFromN1Data(kanji);
+    this.lookUpKanjiFromN2Data(kanji);
+    this.lookUpKanjiFromN3Data(kanji);
+    this.lookUpKanjiFromN4Data(kanji);
+    this.lookUpKanjiFromN5Data(kanji);
   }
   lookUpKanjiFromData(kanji: string) {
     this.n1List = [];
@@ -228,14 +204,33 @@ export default class VocabularyHint extends Vue {
       }
     }
   }
+
+  speakSynthesis(word: any) {
+    const synth = window.speechSynthesis;
+    const voices = synth.getVoices();
+    let voice: SpeechSynthesisVoice | undefined = undefined;
+    if (voices.length) {
+      voice = voices.find(_voice => /ja[-_]JP/.test(_voice.lang));
+    }
+
+    const utterThis = new SpeechSynthesisUtterance(word.hiragana);
+
+    utterThis.pitch = 1;
+    utterThis.rate = 0.6;
+    utterThis.lang = "ja-JP";
+    if (voice != undefined) {
+      utterThis.voice = voice;
+    }
+    synth.speak(utterThis);
+  }
 }
 </script>
 
 <style scoped>
-.col1{
+.col1 {
   margin-top: -10px;
 }
-.row:hover{
- background-color: #E0F2F1;
+.row:hover {
+  background-color: #e0f2f1;
 }
 </style>
