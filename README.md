@@ -8,7 +8,8 @@ This is a sample view, a single flashcard with only kanji will be shown at first
 
 Press `next` button to see next flashcard, also can to see previous flashcard by clicking `prev` button.
 
-![](public/kanji-card-flip.gif)
+It shows vocabulary list of that particular kanji is used. 
+![](public/kanji-card-ui.gif)
 
 ## Project setup
 ```
