@@ -1,6 +1,9 @@
 <template>
-  <v-container id="main" class="mx-auto my-auto pa-4">
-    <v-row align="center" justify="center" height="100%">
+  <v-container id="main" class="mx-auto my-auto pa-4" style="height:100%">
+    <v-row align="center" justify="center">
+      <h2 class="primary--text pa-4 align-center" style="font-size:30px">Japanese Kanji flashcard</h2>
+    </v-row>
+    <v-row align="center" justify="center">
       <v-col class="mx-auto my-auto">
         <v-btn @click="prevKanji" color="primary">prev</v-btn>
       </v-col>
@@ -59,15 +62,12 @@
         </v-card>
       </v-col>
 
-      <v-col>
+      <v-col class="d-flex justify-end">
         <v-btn @click="nextKanji" color="primary">next</v-btn>
       </v-col>
     </v-row>
     <v-row class="align-center">
       <vocabulary-Hint :fcardKanji="vocabKanji" class="mx-auto my-auto" />
-    </v-row>
-    <v-row>
-      <footer />
     </v-row>
   </v-container>
 </template>
@@ -137,5 +137,8 @@ export default class Counter extends Vue {
 }
 .kanji {
   font-size: 180px;
+}
+h2 {
+  font-family: "Lobster", cursive;
 }
 </style>

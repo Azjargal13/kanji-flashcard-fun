@@ -2,15 +2,13 @@
   <v-app>
     <v-content>
       <mainView />
-
-      <v-footer class="primary mt-5">
+      <v-footer class="primary absolute">
         <v-col class="text-center white--text" cols="12">
-          made with full of
+          &copy; made with full of
           <v-icon color="white">$heart</v-icon>
-          in
+          by Azaa in
           {{ new Date().getFullYear() }}.
         </v-col>
-        <v-col class="text-center white--text" cols="12">Find the creator from here</v-col>
       </v-footer>
     </v-content>
   </v-app>
@@ -33,7 +31,7 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.app {
+body footer div {
   font-family: "Noto Serif JP", serif;
 }
 </style>
