@@ -1,4 +1,4 @@
-# Kanji-flashcards
+# Kanji-flashcards https://www.kanjicard.fun/
 
 This project will help to memorize kanjis using flashcard.
 
